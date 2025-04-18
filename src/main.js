@@ -1,48 +1,9 @@
-// import { fetchImages } from './js/pixabay-api'; 
-// import { createGallery, clearGallery, showLoader, hideLoader } from './js/render-functions.js';  
-// import iziToast from 'izitoast';  
-
-
-// const form = document.querySelector('.form');  
-
-// form.addEventListener('submit', async (event) => {  
-//     event.preventDefault();  
-    
-//     const query = document.querySelector('input[name="search-text"]').value;  
-
-//     clearGallery();   
-//     showLoader();   
-
-//     try {  
-//         const response = await fetchImages(query); 
-//         const images = response.hits;  
-
-//         if (images.length > 0) {  
-//             createGallery(images); 
-//         } else {  
-//             iziToast.error({  
-//                 title: 'Error',  
-//                 message: 'Sorry, there are no images matching your search query. Please try again.',  
-//             });  
-//         }  
-//     } catch (error) {  
-//         console.error('There was an error!', error);  
-//         iziToast.error({  
-//             title: 'Error',  
-//             message: 'There was an error reaching the API. Please try again later.',  
-//         });  
-//     } finally {  
-//         hideLoader();   
-//     }  
-// });  
-
 import { getAllImages } from './js/pixabay-api';
 import { imageTemplate, imagesTemplate } from './js/render-functions';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
 
 const refs = {
   form: document.querySelector('.form'),
@@ -71,7 +32,6 @@ function searchImages(e) {
           messageLineHeight: '24px',
           maxWidth: '432px',
         });
-
       } else {
         const markup = imagesTemplate(arr);
         refs.gallery.innerHTML = markup;
@@ -104,7 +64,6 @@ function searchImages(e) {
 function showLoader() {
   refs.loader.classList.remove('hidden');
   refs.gallery.classList.add('hidden');
-
 }
 
 function hideLoader() {
